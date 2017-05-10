@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DataBackup {
-	@Scheduled(fixedDelayString ="${db.backup.delay}")
+//	@Scheduled(fixedDelayString ="${db.backup.delay}")
 //	@Scheduled(fixedDelay = 1000)
 	public void demoServiceMethod()
 	{

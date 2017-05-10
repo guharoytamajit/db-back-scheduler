@@ -4,6 +4,12 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import liquibase.database.Database;
+import liquibase.diff.output.DiffOutputControl;
+import liquibase.integration.commandline.CommandLineUtils;
+import liquibase.integration.spring.SpringLiquibase;
+import liquibase.util.StringUtils;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -50,9 +56,9 @@ String databaseDriver;
 		dataSource.setPassword(databasePassword);
 		
 		// schema init
-		   Resource initSchema = new ClassPathResource("schema.sql");
+/*		   Resource initSchema = new ClassPathResource("schema.sql");
 		   DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initSchema);
-		   DatabasePopulatorUtils.execute(databasePopulator, dataSource);
+		   DatabasePopulatorUtils.execute(databasePopulator, dataSource);*/
 		return dataSource;
 	}
 
@@ -86,4 +92,12 @@ String databaseDriver;
 
 		return transactionManager;
 	}
+	
+/*	@Bean
+	public SpringLiquibase liquibase() {
+	    SpringLiquibase liquibase = new SpringLiquibase();
+	    liquibase.setChangeLog("classpath:liquibase-changeLog.xml");
+	    liquibase.setDataSource(dataSource2());
+	    return liquibase;
+	}*/
 }
